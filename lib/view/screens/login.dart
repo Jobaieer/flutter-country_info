@@ -20,6 +20,10 @@ class _LoginState extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset('assets/logo.png',
+                height: 200,
+                width: 200,
+              ),
               Text(
                 "Log In",
                 style: TextStyle(

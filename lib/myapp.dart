@@ -1,4 +1,5 @@
-import 'package:country_info/view/home.dart';
+// import 'package:country_info/view/screens/home.dart';
+import 'package:country_info/view/screens/login.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Country Info',
-      home: const Home(),
+      home: const Login(),
     );
   }
 }

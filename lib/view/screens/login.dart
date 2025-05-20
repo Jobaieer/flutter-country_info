@@ -1,3 +1,4 @@
+import 'package:country_info/view/screens/home.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -20,10 +21,7 @@ class _LoginState extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/logo.png',
-                height: 200,
-                width: 200,
-              ),
+              Image.asset('assets/logo.png', height: 200, width: 200),
               Text(
                 "Log In",
                 style: TextStyle(
@@ -107,19 +105,34 @@ class _LoginState extends State<Login> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if(_formKey.currentState!.validate()){
-
+                        if (_formKey.currentState!.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Login Successful')),
+                          );
                         }
+
+                        // If I use this Navigator.push it show me back button on Appbar, Normally back previous page/pages.
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home(email: emailController.text,)),
+                        );
+
+                        // When I use this .pushReplacement it clear other state in stack only left Home(), ultimately can't back previous page/pages.
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => Home(email: emailController.text,)),
+                        // );
                       },
+
                       // onPressed: () { print(emailController.text); print(passwordController.text); },
-                        child: Text(
-                          'Login',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blueAccent,
-                          ),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueAccent,
                         ),
                       ),
+                    ),
                   ],
                 ),
               ),

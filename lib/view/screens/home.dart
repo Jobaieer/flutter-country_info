@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  final String email;
+  const Home({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,14 @@ class Home extends StatelessWidget {
         ),
         titleSpacing: 0,
         centerTitle: true,
+      ),
+
+      body: Center(
+        child: Column(
+          children: [
+            Text(email)
+          ],
+        ),
       ),
     );
   }

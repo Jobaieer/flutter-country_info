@@ -1,7 +1,11 @@
+import 'package:country_info/data/country_data.dart';
+import 'package:country_info/view/widgets/countrycard.dart';
 import 'package:flutter/material.dart';
+import 'detail.dart';
 
 class Home extends StatelessWidget {
   final String email;
+
   const Home({super.key, required this.email});
 
   @override
@@ -21,12 +25,23 @@ class Home extends StatelessWidget {
         centerTitle: true,
       ),
 
-      body: Center(
-        child: Column(
-          children: [
-            Text(email)
-          ],
-        ),
+      body: ListView.builder(
+        //scroll kora jai emon list
+        itemCount: countries.length, // koy ta desh aca
+        itemBuilder: (BuildContext context, int index) {
+          return CountryCard(
+            country: countries[index], //desh enter kora hocca
+            onTap: () {
+              //click korla screen aa show korba
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => Detail(country: countries[index]),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
